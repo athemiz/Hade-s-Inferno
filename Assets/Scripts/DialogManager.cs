@@ -8,6 +8,7 @@ public class DialogManager : MonoBehaviour {
     public GameObject player;
     public GameObject barqueiro;
     public GameObject dBox;
+    public GameObject cutscenes;
     public Text dText;
     public Text dName;
 
@@ -27,7 +28,7 @@ public class DialogManager : MonoBehaviour {
             "Com todo prazer!",
             "Espero que sua estadia no inferno seja a pior possivel. Hahahahaha" };
         string[] nome = new string[] {"Caronte", "Vioder", "Caronte", "Caronte", "Vioder", "Caronte", "Vioder", "Vioder", "Caronte", "Caronte" };
-        if (barqueiro.transform.position.x - player.transform.position.x < 5 && !binativo) ShowBox(dialogo, nome);
+        if (barqueiro.transform.position.x - player.transform.position.x < System.Math.Abs(5) && !binativo) ShowBox(dialogo, nome);
     }
 
     public void ShowBox(string[] dialogue, string[] nome) {
@@ -49,6 +50,7 @@ public class DialogManager : MonoBehaviour {
             dBox.SetActive(false);
             dialogActive = false;
             player.gameObject.GetComponent<PlayerController>().enabled = true;
+            cutscenes.SetActive(true);
         }
     }
 
