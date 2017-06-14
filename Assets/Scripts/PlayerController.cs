@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
         {
             isGrounded = true;
             animator.SetBool("Ground", true);
+            animator.SetBool("isJumping", false);
         }
     }
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour {
         {
             isGrounded = false;
             animator.SetBool("Ground",false);
+            animator.SetBool("isJumping", true);
         }
     }
 
@@ -55,7 +57,6 @@ public class PlayerController : MonoBehaviour {
     {
 // Parametros Animação - CORRER
         animator.SetBool("isRunning", false);
-        animator.SetBool("isJumping", true);
 
         // Parametros - MOVIMENTO
         if (Input.GetAxisRaw("Horizontal") > 0)
@@ -81,9 +82,14 @@ public class PlayerController : MonoBehaviour {
             body.AddForce(transform.up * force);
         }
 
-       
+        if (Input.GetKey(KeyCode.J))
+        {
+            animator.SetBool("isPunching", true);
+        }
+        else if(!Input.GetKey(KeyCode.J)) animator.SetBool("isPunching", false);
 
-       if (isGrounded)
+
+        if (isGrounded)
        {
             animator.SetBool("isJumping", false);
             animator.SetBool("Ground", true);
