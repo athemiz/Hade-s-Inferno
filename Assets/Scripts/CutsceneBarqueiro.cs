@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutsceneManager : MonoBehaviour {
+public class CutsceneBarqueiro : MonoBehaviour {
 
     public GameObject player;
     public GameObject barqueiro;
@@ -17,12 +17,12 @@ public class CutsceneManager : MonoBehaviour {
 	void Update () {
         player.GetComponent<Animator>().SetBool("isRunning", true);
         player.transform.Translate(Vector2.right * player.gameObject.GetComponent<PlayerController>().velocidade * Time.deltaTime);
-        player.transform.eulerAngles = new Vector2(0, 0);
         if (barqueiro.transform.position.x - player.transform.position.x <= -0.3)
         {
             player.GetComponent<Animator>().SetBool("isRunning", false);
             barqueiro.GetComponent<Animator>().SetBool("Moving", true);
-            this.gameObject.SetActive(false);
+            barqueiro.transform.Translate(Vector2.right * player.gameObject.GetComponent<PlayerController>().velocidade * Time.deltaTime);
+            //this.gameObject.SetActive(false);
         }
     }
 }

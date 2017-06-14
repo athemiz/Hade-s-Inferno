@@ -38,6 +38,8 @@ public class DialogManager : MonoBehaviour {
         dName.text = nome[i];
         player.gameObject.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Animator>().SetBool("isRunning", false);
+        player.GetComponent<Animator>().SetBool("isPunching", false);
+        player.GetComponent<Animator>().SetBool("isJumping", false);
         if (dialogActive && Input.GetKeyDown(KeyCode.Space) && i != dialogue.Length-1)
         {
             i++;
