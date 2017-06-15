@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\CutsceneBarqueiro.cs" />
     <Compile Include="Assets\Scripts\DialogManager.cs" />
     <Compile Include="Assets\Scripts\EnemysManager.cs" />
+    <Compile Include="Assets\Scripts\EsqueletosIA.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

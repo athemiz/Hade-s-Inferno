@@ -18,19 +18,30 @@ public class EnemysManager : MonoBehaviour {
         if (collision.gameObject.tag == "Player" && player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("punch"))
         {
             hp--;
-            body.AddForce(Vector2.right * 15);
+            if (player.transform.eulerAngles[1] == 180) body.AddForce(Vector2.left * 15);
+            else body.AddForce(Vector2.right * 15);
             Debug.Log(hp);
         }
         else if (collision.gameObject.tag == "Player" && !player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("punch"))
         {
             player.gameObject.GetComponent<PlayerController>().hp--;
-            player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 10);
+            if (transform.position.x >= player.transform.position.x)
+            {
+                if (transform.eulerAngles[1] == 180) player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 15);
+                else player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 15);
+            }
+            else if (transform.position.x < player.transform.position.x)
+            {
+                if (transform.eulerAngles[1] == 180) player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 15);
+                else player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 15);
+            }
             Debug.Log(hp);
         }
     }
 
     // Update is called once per frame
     void Update () {
+        Debug.Log(player.transform.eulerAngles[1]);
         if (hp <= 0) Destroy(this.gameObject);
         if (player.gameObject.GetComponent<PlayerController>().hp<=0) Destroy(player.gameObject);
     }
