@@ -14,7 +14,7 @@ public class DialogManager : MonoBehaviour {
 
     public bool dialogActive;
 
-    public int i = 0;
+    private int i = 0;
     public bool binativo = false;
     public void BarqueiroDialog()
     {

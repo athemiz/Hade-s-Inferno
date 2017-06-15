@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-// Parametros - MOVIMENTO
+    //Parametros Personagem - VIDA
+    public int hp = 30;
+
+    // Parametros - MOVIMENTO
     public float velocidade;
 
-// Parametros Animação - CORRER
+    // Parametros Animação - CORRER
     public Transform player;
     private Animator animator;
     public Rigidbody2D body;
@@ -15,8 +18,6 @@ public class PlayerController : MonoBehaviour {
     // Parametros Animação - PULO
     public float force = 100;
 
-    public float jumpTime = 0.4f;
-    public float jumpDelay = 0.4f;
     public bool isGrounded;
 
     // Use this for initialization
@@ -26,9 +27,9 @@ public class PlayerController : MonoBehaviour {
         body = GetComponent<Rigidbody2D>();
     }
 
-    void OnCollisionEnter2D(Collision2D colision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (colision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
             animator.SetBool("Ground", true);
@@ -36,9 +37,9 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionExit2D(Collision2D colision)
+    void OnCollisionExit2D(Collision2D collision)
     {
-        if (colision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
             animator.SetBool("Ground",false);
