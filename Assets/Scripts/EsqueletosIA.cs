@@ -15,16 +15,19 @@ public class EsqueletosIA : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        time += Time.deltaTime;
-        transform.Translate(Vector2.left * Time.deltaTime);
-        if (time > 5 && time < 10)
+        if (!this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("dead"))
         {
-            transform.eulerAngles = new Vector2(0, 180);
-        }
-        else if (time >= 10)
-        {
-            time = 0;
-            transform.eulerAngles = new Vector2(0, 0);
+            time += Time.deltaTime;
+            transform.Translate(Vector2.left * Time.deltaTime);
+            if (time > 5 && time < 10)
+            {
+                transform.eulerAngles = new Vector2(0, 180);
+            }
+            else if (time >= 10)
+            {
+                time = 0;
+                transform.eulerAngles = new Vector2(0, 0);
+            }
         }
     }
 }

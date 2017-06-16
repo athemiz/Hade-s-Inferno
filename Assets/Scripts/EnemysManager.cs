@@ -15,32 +15,41 @@ public class EnemysManager : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("punch"))
+        if (!this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("dead"))
         {
-            hp--;
-            if (player.transform.eulerAngles[1] == 180) body.AddForce(Vector2.left * 15);
-            else body.AddForce(Vector2.right * 15);
-        }
-        else if (collision.gameObject.tag == "Player" && !player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("punch"))
-        {
-            player.gameObject.GetComponent<PlayerController>().hp--;
-            if (transform.position.x >= player.transform.position.x)
+            if (collision.gameObject.tag == "Player" && player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("punch"))
             {
-                if (transform.eulerAngles[1] == 180) player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 15);
-                else player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 15);
+                hp--;
+                if (player.transform.eulerAngles[1] == 180) body.AddForce(Vector2.left * 15);
+                else body.AddForce(Vector2.right * 15);
             }
-            else if (transform.position.x < player.transform.position.x)
+            else if (collision.gameObject.tag == "Player" && !player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("punch"))
             {
-                if (transform.eulerAngles[1] == 180) player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 15);
-                else player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 15);
+                player.gameObject.GetComponent<PlayerController>().hp--;
+                if (transform.position.x >= player.transform.position.x)
+                {
+                    if (transform.eulerAngles[1] == 180) player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 15);
+                    else player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 15);
+                }
+                else if (transform.position.x < player.transform.position.x)
+                {
+                    if (transform.eulerAngles[1] == 180) player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 15);
+                    else player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 15);
+                }
             }
         }
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         Debug.Log(player.GetComponent<PlayerController>().hp);
-        if (hp <= 0) Destroy(this.gameObject);
-        if (player.gameObject.GetComponent<PlayerController>().hp<=0) Destroy(player.gameObject);
+        //if (hp <= 0) Destroy(this.gameObject);
+        if (hp <= 0)
+        {
+            this.GetComponent<Animator>().SetBool("isDead", true);
+            this.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        if (player.gameObject.GetComponent<PlayerController>().hp <= 0) Destroy(player.gameObject);
     }
 }
