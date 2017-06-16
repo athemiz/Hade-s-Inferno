@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     //Parametros Personagem - VIDA
-    public int hp = 30;
+    public int Maxhp = 30;
+    public int hp;
 
     // Parametros - MOVIMENTO
     public float velocidade;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        hp = Maxhp;
         animator = player.GetComponent<Animator> ();
         body = GetComponent<Rigidbody2D>();
     }
