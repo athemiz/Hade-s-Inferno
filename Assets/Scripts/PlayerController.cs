@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour {
 
     //Parametros Personagem - VIDA
     public int Maxhp = 30;
+    public float Maxsta = 100;
     public int hp;
+    public float sta;
 
     // Parametros - MOVIMENTO
     public float velocidade;
@@ -20,11 +22,11 @@ public class PlayerController : MonoBehaviour {
     public float force = 100;
 
     public bool isGrounded;
-
     // Use this for initialization
     void Start()
     {
         hp = Maxhp;
+        sta = Maxsta;
         animator = player.GetComponent<Animator> ();
         body = GetComponent<Rigidbody2D>();
     }
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour {
     {
 // Parametros Animação - CORRER
         animator.SetBool("isRunning", false);
+        if(sta < Maxsta)sta += 0.2f;
 
         // Parametros - MOVIMENTO
         if (Input.GetAxisRaw("Horizontal") > 0)
@@ -88,6 +91,12 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.J))
         {
             animator.SetBool("isPunching", true);
+            sta -= 1;
+            if (sta <= 0)
+            {
+                sta = 0;
+                animator.SetBool("isPunching", false);
+            }
         }
         else if(!Input.GetKey(KeyCode.J)) animator.SetBool("isPunching", false);
 

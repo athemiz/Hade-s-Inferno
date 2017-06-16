@@ -7,6 +7,7 @@ public class SurvivabilityManager : MonoBehaviour {
 
     public GameObject player;
     public GameObject hp;
+    public GameObject stamina;
     private int temp;
 
 	// Use this for initialization
@@ -18,5 +19,6 @@ public class SurvivabilityManager : MonoBehaviour {
     void Update()
     {
         hp.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(player.GetComponent<PlayerController>().hp, hp.GetComponent<Image>().rectTransform.sizeDelta.y);
+        stamina.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(player.GetComponent<PlayerController>().sta, stamina.GetComponent<Image>().rectTransform.sizeDelta.y);
     }
 }
