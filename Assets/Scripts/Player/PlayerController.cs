@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    //Controle de som
+    bool timer = false;
+    private float time = 0;
 
     //Parametros Personagem - VIDA
     public int Maxhp = 30;
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     public Transform player;
     private Animator animator;
     public Rigidbody2D body;
+    public AudioSource hit;
 
     // Parametros Animação - PULO
     public float force = 100;
@@ -55,6 +59,7 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (timer) time += Time.deltaTime;
         Movimentar();
     }
 
@@ -90,6 +95,16 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.J))
         {
+            if (time == 0)
+            {
+                hit.Play();
+                timer = true;
+            }
+            if (time >= 0.2)
+            {
+                time = 0;
+                timer = false;
+            }
             animator.SetBool("isPunching", true);
             sta -= 1;
             if (sta <= 0)

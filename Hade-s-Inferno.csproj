@@ -78,14 +78,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\CutsceneBarqueiro.cs" />
-    <Compile Include="Assets\Scripts\DialogManager.cs" />
-    <Compile Include="Assets\Scripts\EnemysManager.cs" />
-    <Compile Include="Assets\Scripts\EsqueletosIA.cs" />
-    <Compile Include="Assets\Scripts\ItensManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\SurvivabilityManager.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Cutscenes\CutsceneBarqueiro.cs" />
+    <Compile Include="Assets\Scripts\Dialogo\DialogManager.cs" />
+    <Compile Include="Assets\Scripts\Inimigos\EnemysManager.cs" />
+    <Compile Include="Assets\Scripts\Inimigos\EsqueletosIA.cs" />
+    <Compile Include="Assets\Scripts\Itens\ItensManager.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\SurvivabilityManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

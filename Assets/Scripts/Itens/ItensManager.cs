@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItensManager : MonoBehaviour {
 
     public GameObject player;
+    public AudioSource heal;
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +15,11 @@ public class ItensManager : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            heal.Play();
             player.GetComponent<PlayerController>().hp += 10;
             if (player.GetComponent<PlayerController>().hp > player.GetComponent<PlayerController>().Maxhp) player.GetComponent<PlayerController>().hp = player.GetComponent<PlayerController>().Maxhp;
-            Destroy(gameObject);
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            this.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
