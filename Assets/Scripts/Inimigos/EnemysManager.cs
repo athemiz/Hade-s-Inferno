@@ -71,6 +71,6 @@ public class EnemysManager : MonoBehaviour {
             this.GetComponent<Animator>().SetBool("isDead", true);
             this.GetComponent<BoxCollider2D>().enabled = false;
         }
-        if (player.gameObject.GetComponent<PlayerController>().hp <= 0) Destroy(player.gameObject);
+        if (player.gameObject.GetComponent<PlayerController>().hp <= 0) Application.LoadLevel(player.gameObject.scene.name);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     //Controle de som
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
     public Rigidbody2D body;
     public AudioSource hit;
+    private Scene scene;
 
     // Parametros Animação - PULO
     public float force = 100;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour {
         sta = Maxsta;
         animator = player.GetComponent<Animator> ();
         body = GetComponent<Rigidbody2D>();
+        scene = SceneManager.GetActiveScene();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -43,6 +46,13 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("Ground", true);
             animator.SetBool("isJumping", false);
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        isGrounded = true;
+        animator.SetBool("Ground", true);
+        animator.SetBool("isJumping", false);
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -59,6 +69,7 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (player.transform.position.y <= -2.5f) Application.LoadLevel(scene.name);
         if (timer) time += Time.deltaTime;
         Movimentar();
     }
