@@ -9,10 +9,12 @@ public class EnemysManager : MonoBehaviour {
     public Rigidbody2D body;
     private float time = 0;
     private bool timer = false;
+    List<AudioSource> audios = new List<AudioSource>();
     
 	// Use this for initialization
 	void Start () {
         body = GetComponent<Rigidbody2D>();
+        this.GetComponents<AudioSource>(audios);
 	}
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -27,7 +29,7 @@ public class EnemysManager : MonoBehaviour {
                 //Toca o som e liga o temporizador para poder tocar o som novamente
                 if (time == 0)
                 {
-                    this.GetComponent<AudioSource>().Play();
+                    audios[0].Play();
                     timer = true;
                 }
                 //Empurra o Inimigo
@@ -58,13 +60,14 @@ public class EnemysManager : MonoBehaviour {
     {
         //Conta e reseta o tempo para o som
         if (timer) time += Time.deltaTime;
-        if (time >= 1)
+        if (time >= 0.2)
         {
             time = 0;
             timer = false;
         }
         if (hp <= 0)
         {
+            if(!this.GetComponent<Animator>().GetBool("isDead")) audios[1].PlayOneShot(audios[1].clip);
             this.GetComponent<Animator>().SetBool("isDead", true);
             this.GetComponent<BoxCollider2D>().enabled = false;
         }
