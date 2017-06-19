@@ -5,6 +5,7 @@ using UnityEngine;
 public class EsqueletosIA : MonoBehaviour {
 
     private float time=0;
+    public int hp = 30;
 
     // Use this for initialization
     void Start ()
@@ -18,15 +19,17 @@ public class EsqueletosIA : MonoBehaviour {
         if (!this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("dead"))
         {
             time += Time.deltaTime;
-            transform.Translate(Vector2.left * Time.deltaTime);
-            if (time > 5 && time < 10)
+            if(time<=5) transform.Translate(Vector2.left * Time.deltaTime);
+            else if (time > 5 && time < 10)
             {
-                transform.eulerAngles = new Vector2(0, 180);
+                GetComponent<SpriteRenderer>().flipX = true;
+                transform.Translate(Vector2.right * Time.deltaTime);
             }
             else if (time >= 10)
             {
                 time = 0;
-                transform.eulerAngles = new Vector2(0, 0);
+                GetComponent<SpriteRenderer>().flipX = false;
+                transform.Translate(Vector2.left * Time.deltaTime);
             }
         }
     }

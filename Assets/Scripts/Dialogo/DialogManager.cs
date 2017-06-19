@@ -28,7 +28,7 @@ public class DialogManager : MonoBehaviour {
             "Com todo prazer!",
             "Espero que sua estadia no inferno seja a pior possivel. Hahahahaha" };
         string[] nome = new string[] {"Caronte", "Vioder", "Caronte", "Caronte", "Vioder", "Caronte", "Vioder", "Vioder", "Caronte", "Caronte" };
-        if (barqueiro.transform.position.x - player.transform.position.x <= 5 && !binativo) ShowBox(dialogo, nome);
+        if (barqueiro.transform.position.x - player.transform.position.x <= 3 && !binativo) ShowBox(dialogo, nome);
     }
 
     public void ShowBox(string[] dialogue, string[] nome) {

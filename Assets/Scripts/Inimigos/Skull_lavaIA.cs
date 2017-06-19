@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Skull_lavaIA : MonoBehaviour {
 
+    public int hp = 30;
     public GameObject player;
     private Rigidbody2D body;
     private float velocidade = 1f;
@@ -21,14 +22,12 @@ public class Skull_lavaIA : MonoBehaviour {
         {
             if (player.transform.position.x <= this.transform.position.x)
             {
-                Debug.Log("a");
                 body.AddForce(Vector2.left * velocidade);
-                transform.eulerAngles = new Vector2(0, 0);
+                GetComponent<SpriteRenderer>().flipX = false;
             }
             else
             {
-                Debug.Log("b");
-                transform.eulerAngles = new Vector2(0, 180);
+                GetComponent<SpriteRenderer>().flipX = true;
                 body.AddForce(Vector2.right * velocidade);
             }
             if (player.transform.position.y <= this.transform.position.y) body.AddForce(Vector2.down * velocidade);

@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemysManager : MonoBehaviour {
+    public EsqueletosIA esqueleto;
+    public Skull_lavaIA skull_lava;
 
-    public int hp = 30;
     public GameObject player;
     public Rigidbody2D body;
+
     private float time = 0;
     private bool timer = false;
+
     List<AudioSource> audios = new List<AudioSource>();
     
 	// Use this for initialization
 	void Start () {
+        esqueleto = GetComponent<EsqueletosIA>();
+        skull_lava = GetComponent<Skull_lavaIA>();
         body = GetComponent<Rigidbody2D>();
         this.GetComponents<AudioSource>(audios);
 	}
@@ -25,7 +30,16 @@ public class EnemysManager : MonoBehaviour {
             //Caso Player o ataque
             if (collision.gameObject.tag == "Player" && player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("punch"))
             {
-                hp--;
+                if (esqueleto)
+                {
+                    Debug.Log(esqueleto.hp);
+                    esqueleto.hp--;
+                }
+                else if (skull_lava)
+                {
+                    Debug.Log(skull_lava.hp);
+                    skull_lava.hp--;
+                }
                 //Toca o som e liga o temporizador para poder tocar o som novamente
                 if (time == 0)
                 {
@@ -65,11 +79,22 @@ public class EnemysManager : MonoBehaviour {
             time = 0;
             timer = false;
         }
-        if (hp <= 0)
+        if (esqueleto)
         {
-            if(!this.GetComponent<Animator>().GetBool("isDead")) audios[1].PlayOneShot(audios[1].clip);
-            this.GetComponent<Animator>().SetBool("isDead", true);
-            this.GetComponent<BoxCollider2D>().enabled = false;
+            if (esqueleto.hp <= 0)
+            {
+                if (!this.GetComponent<Animator>().GetBool("isDead")) audios[1].PlayOneShot(audios[1].clip);
+                this.GetComponent<Animator>().SetBool("isDead", true);
+                this.GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
+        else if (skull_lava) {
+            if (skull_lava.hp <= 0)
+            {
+                if (!this.GetComponent<Animator>().GetBool("isDead")) audios[1].PlayOneShot(audios[1].clip);
+                this.GetComponent<Animator>().SetBool("isDead", true);
+                this.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
         if (player.gameObject.GetComponent<PlayerController>().hp <= 0) Application.LoadLevel(player.gameObject.scene.name);
     }

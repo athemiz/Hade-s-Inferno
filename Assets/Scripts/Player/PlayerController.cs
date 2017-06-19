@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
 
-    void FixedUpdate()
+    void Update()
     {
         if (player.transform.position.y <= -2.5f) Application.LoadLevel(scene.name);
         if (timer) time += Time.deltaTime;
