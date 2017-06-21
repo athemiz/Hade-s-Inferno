@@ -71,7 +71,9 @@ public class PlayerController : MonoBehaviour {
     {
         if (player.transform.position.y <= -2.5f) Application.LoadLevel(scene.name);
         if (timer) time += Time.deltaTime;
-        Movimentar();
+        if(Time.timeScale==1) Movimentar();
+        if (Input.GetKeyDown(KeyCode.Return) && Time.timeScale == 1) Time.timeScale = 0;
+        else if (Input.GetKeyDown(KeyCode.Return) && Time.timeScale == 0) Time.timeScale = 1;
     }
 
     void Movimentar()
