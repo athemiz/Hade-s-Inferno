@@ -91,7 +91,7 @@
     <Compile Include="Assets\Scripts\Survivability\SurvivabilityManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Sprites\Plataformas\Fase3\Fase3.txt" />
+    <None Include="Assets\Sprites\Plataformas\Fase 3\Fase3.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

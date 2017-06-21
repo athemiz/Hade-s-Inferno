@@ -69,7 +69,8 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        if (player.transform.position.y <= -2.5f) Application.LoadLevel(scene.name);
+        if (player.transform.position.y <= -2.5f && scene.name=="Fase 2") Application.LoadLevel("LevelSelect");
+        else if (player.transform.position.y <= -5.5f && scene.name == "Fase 2") Application.LoadLevel("LevelSelect");
         if (timer) time += Time.deltaTime;
         if(Time.timeScale==1) Movimentar();
         if (Input.GetKeyDown(KeyCode.Return) && Time.timeScale == 1) Time.timeScale = 0;
