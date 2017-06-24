@@ -94,7 +94,6 @@ public class DialogManager : MonoBehaviour {
     }
 
     public void ShowBox(string[] dialogue, string[] nome) {
-        Debug.Log("hahah");
         dBox.SetActive(true);
         dialogActive = true;
         dText.text = dialogue[i];

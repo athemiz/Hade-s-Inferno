@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
     private float time = 0;
 
     //Parametros Personagem - VIDA
-    public int Maxhp = 30;
+    public int Maxhp = 100;
     public float Maxsta = 100;
     public int hp;
     public float sta;
@@ -69,8 +69,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        if (player.transform.position.y <= -2.5f && scene.name=="Fase 2") Application.LoadLevel("LevelSelect");
-        else if (player.transform.position.y <= -5.5f && scene.name == "Fase 2") Application.LoadLevel("LevelSelect");
+        if (player.transform.position.y <= -3.5f && scene.name=="Fase 2") Application.LoadLevel("Fase 2");
         if (timer) time += Time.deltaTime;
         if(Time.timeScale==1) Movimentar();
         if (Input.GetKeyDown(KeyCode.Return) && Time.timeScale == 1) Time.timeScale = 0;
@@ -109,7 +108,8 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.J))
         {
-            if (time == 0)
+            animator.SetBool("isPunching", true);
+            if (time == 0 && sta>1)
             {
                 hit.Play();
                 timer = true;
@@ -119,7 +119,6 @@ public class PlayerController : MonoBehaviour {
                 time = 0;
                 timer = false;
             }
-            animator.SetBool("isPunching", true);
             sta -= 1;
             if (sta <= 0)
             {

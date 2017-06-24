@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Dialogo\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Inimigos\EnemysManager.cs" />
     <Compile Include="Assets\Scripts\Inimigos\EsqueletosIA.cs" />
+    <Compile Include="Assets\Scripts\Inimigos\HellwolfIA.cs" />
     <Compile Include="Assets\Scripts\Inimigos\Skull_lavaIA.cs" />
     <Compile Include="Assets\Scripts\Itens\ItensManager.cs" />
     <Compile Include="Assets\Scripts\LevelSelector\LevelSelectorManager.cs" />

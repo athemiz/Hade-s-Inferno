@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemysManager : MonoBehaviour {
     public EsqueletosIA esqueleto;
     public Skull_lavaIA skull_lava;
+    public HellwolfIA hellwolf;
 
     public GameObject player;
     public Rigidbody2D body;
@@ -18,28 +19,31 @@ public class EnemysManager : MonoBehaviour {
 	void Start () {
         esqueleto = GetComponent<EsqueletosIA>();
         skull_lava = GetComponent<Skull_lavaIA>();
+        hellwolf = GetComponent<HellwolfIA>();
         body = GetComponent<Rigidbody2D>();
         this.GetComponents<AudioSource>(audios);
 	}
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        Physics2D.IgnoreLayerCollision(8, 8);
         //Caso Inimigo não esteja morto
         if (!this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("dead"))
         {
             //Caso Player o ataque
             if (collision.gameObject.tag == "Player" && player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("punch"))
             {
-                if (esqueleto)
-                {
-                    Debug.Log(esqueleto.hp);
-                    esqueleto.hp--;
-                }
+                if (esqueleto) esqueleto.hp--;
                 else if (skull_lava)
                 {
                     Debug.Log(skull_lava.hp);
                     skull_lava.hp--;
                 }
+                else if (hellwolf) {
+                    hellwolf.hp--;
+                    Debug.Log(hellwolf.hp);
+                        }
+                
                 //Toca o som e liga o temporizador para poder tocar o som novamente
                 if (time == 0)
                 {
@@ -69,8 +73,8 @@ public class EnemysManager : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
         //Conta e reseta o tempo para o som
         if (timer) time += Time.deltaTime;
@@ -90,6 +94,15 @@ public class EnemysManager : MonoBehaviour {
         }
         else if (skull_lava) {
             if (skull_lava.hp <= 0)
+            {
+                if (!this.GetComponent<Animator>().GetBool("isDead")) audios[1].PlayOneShot(audios[1].clip);
+                this.GetComponent<Animator>().SetBool("isDead", true);
+                this.GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
+        else if (hellwolf)
+        {
+            if (hellwolf.hp <= 0)
             {
                 if (!this.GetComponent<Animator>().GetBool("isDead")) audios[1].PlayOneShot(audios[1].clip);
                 this.GetComponent<Animator>().SetBool("isDead", true);
