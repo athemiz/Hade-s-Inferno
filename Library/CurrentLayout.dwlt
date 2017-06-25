@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 613}
   m_MaxSize: {x: 18008, y: 18063}
   vertical: 0
-  controlID: 408
+  controlID: 12114
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 613}
   m_MaxSize: {x: 10004, y: 18063}
   vertical: 1
-  controlID: 409
+  controlID: 12115
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 470
+  controlID: 11758
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,9 +416,9 @@ MonoBehaviour:
     height: 896
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: fe260000
     m_LastClickedID: 0
-    m_ExpandedIDs: e4fbffff00000000
+    m_ExpandedIDs: 364bffffa278ffffe6a8ffff98fbffff00000000042a0000da2b00005a2d0000222e0000442e0000ca370000a03a00008c3c0000144a0200b86a0200b86b02003a6f0200d66f0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -437,7 +437,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
   m_ExpandedScenes:
-  - Castelo
+  - Fase 3
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -468,14 +468,14 @@ MonoBehaviour:
     width: 1121
     height: 349
   m_SceneLighting: 1
-  lastFramingTime: 1058.1083319052636
+  lastFramingTime: 1214.0561151885158
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -16.456554, y: -7.646736, z: 0}
+    m_Target: {x: -23.96951, y: 0.028929368, z: 0}
     speed: 2
-    m_Value: {x: -16.456554, y: -7.646736, z: 0}
+    m_Value: {x: -23.96951, y: 0.028929368, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -502,9 +502,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 43.48408
+    m_Target: 102.79872
     speed: 2
-    m_Value: 43.48408
+    m_Value: 102.79872
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -579,14 +579,14 @@ MonoBehaviour:
     m_ValueSerializationHelper:
     - {x: 648.60004, y: 130}
     - {x: 632.4, y: 96.4}
-    - {x: 636.60004, y: 112.00001}
-    - {x: 636.60004, y: 396}
-    - {x: 636.60004, y: 112.00001}
+    - {x: 636.60004, y: 130}
+    - {x: 636.60004, y: 130}
+    - {x: 636.60004, y: 130}
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 19a1c4ae742fb7641ba4cd23d53630be,
+  m_AnimatorController: {fileID: 9100000, guid: 796dbd55caa484a4d819c0828952b5a3,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107535343265711308, guid: 19a1c4ae742fb7641ba4cd23d53630be,
+  - m_Target: {fileID: 1107535343265711308, guid: 796dbd55caa484a4d819c0828952b5a3,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -637,19 +637,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Sounds/Music
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sounds/Music
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\otavi\OneDrive\Documentos\GitHub\Hade-s-Inferno
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 157.05406}
-    m_SelectedIDs: 58260000
-    m_LastClickedID: 9816
-    m_ExpandedIDs: 00000000ca240000d2250000462600006a2600003027000032270000a2270000b027000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 52270000
+    m_LastClickedID: 10066
+    m_ExpandedIDs: 00000000e8240000ec25000060260000822600004427000046270000b6270000c427000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -677,7 +677,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca240000d2250000462600006a2600003027000032270000a2270000b027000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000e8240000ec25000060260000822600004427000046270000b6270000c427000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -704,8 +704,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000be250000062500001a2600003e2f00009e2f00008a250000622500002a2500007c260000ac360000f6240000000000005e260000fc280000
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000be250000062500001a2600003e2f00009e2f00008a250000622500002a2500007c260000ac360000f6240000000000005e260000fc280000344a0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

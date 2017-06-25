@@ -1,9 +1,0 @@
-Mandei essa fase toda separada os arquivos
-
-O arquivo "colisão chão", é o chão da fase onde o personagem vai andar quando não
-estiver nas plataformas. Você vai ver que tem uns buracos nesse arquivo, que é pra quando 
-personagem cair ele morrer
-
-O background é o fundo da fase
-
-Plataformas, são as plataformas da fase
