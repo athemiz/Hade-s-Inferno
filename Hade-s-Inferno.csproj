@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Itens\ItensManager.cs" />
     <Compile Include="Assets\Scripts\LevelSelector\LevelSelectorManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Scenes\DeathManager.cs" />
     <Compile Include="Assets\Scripts\Scenes\ScenesManager.cs" />
     <Compile Include="Assets\Scripts\Survivability\SurvivabilityManager.cs" />
   </ItemGroup>
