@@ -8,6 +8,7 @@ public class DialogManager : MonoBehaviour {
 
     public GameObject player;
     public GameObject barqueiro;
+    public GameObject hades;
     public GameObject dBox;
     public GameObject cutscenes;
     public Text dText;
@@ -18,11 +19,13 @@ public class DialogManager : MonoBehaviour {
 
     private int i = 0;
     public bool binativo = false;
+    public bool fase1 = false;
     public bool fase2 = false;
     public bool fase3 = false;
     public bool fase4 = false;
     public bool fase5 = false;
     public bool castelo = false;
+    public bool boss = false;
     public void BarqueiroDialog()
     {
         string[] dialogo = new string[] { "O que um mortal como você faz aqui, na margem do rio dos mortos?",
@@ -36,6 +39,13 @@ public class DialogManager : MonoBehaviour {
             "Espero que sua estadia no inferno seja a pior possivel. Hahahahaha" };
         string[] nome = new string[] {"Caronte", "Vioder", "Caronte", "Caronte", "Vioder", "Caronte", "Vioder", "Vioder", "Caronte", "Caronte" };
         if (barqueiro.transform.position.x - player.transform.position.x <= 3 && !binativo) ShowBox(dialogo, nome);
+    }
+    public void Fase1Dialog()
+    {
+        string[] dialogo = new string[] { "Ao que tudo indica estou me aproximando do Rio Aqueronte, o rio do submundo.",
+            "Hades seu miseravel me espere, estou indo de encontro a você para buscar minha vingança.", };
+        string[] nome = new string[] { "Vioder", "Vioder" };
+        if (!fase1) ShowBox(dialogo, nome);
     }
     public void Fase2Dialog()
     {
@@ -72,6 +82,17 @@ public class DialogManager : MonoBehaviour {
         string[] nome = new string[] { "HADES" };
         if (!castelo) ShowBox(dialogo, nome);
     }
+    public void HadesDialog()
+    {
+        string[] dialogo = new string[] { "Hades seu miseravel, devolva as almas das pessoas da minha vila.",
+        "Seu feito em atravessar meus 9 infernos é respeitavel humano, tenho que admitir, mas as almas ja são minhas.",
+        "Então terei que tira-las a força de você.",
+        "Idiota, como ousa desafiar um deus em seus proprios dominios. Você não vai sair daqui com vida.",
+        "A minha vida não é nada se comparada as almas dos meus amigos",
+        "Se faz tanta questão assim de morrer, irei providenciar que isto aconteça." };
+        string[] nome = new string[] { "Vioder", "HADES", "Vioder", "HADES", "Vioder", "HADES" };
+        if (!boss) ShowBox(dialogo, nome);
+    }
 
     public void ShowBox(string[] dialogue, string[] nome) {
         dBox.SetActive(true);
@@ -95,16 +116,18 @@ public class DialogManager : MonoBehaviour {
             dialogActive = false;
             player.gameObject.GetComponent<PlayerController>().enabled = true;
 
-            if (scene.name == "Fase 1")
+            if (scene.name == "Fase 1" && fase1)
             {
                 cutscenes.SetActive(true);
                 binativo = true;
             }
+            if (scene.name == "Fase 1") fase1 = true;
             if (scene.name == "Fase 2") fase2 = true;
             if (scene.name == "Fase 3") fase3 = true;
             if (scene.name == "Fase 4") fase4 = true;
             if (scene.name == "Fase 5") fase5 = true;
-            if (scene.name == "Castelo") castelo = true;
+            if (scene.name == "Castelo" && castelo) boss = true;
+            if (scene.name == "Castelo" && !boss) castelo = true;
         }
     }
 
@@ -116,10 +139,12 @@ public class DialogManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (scene.name=="Fase 1") BarqueiroDialog();
+        if (scene.name == "Fase 1") Fase1Dialog();
         if (scene.name == "Fase 2") Fase2Dialog();
         if (scene.name == "Fase 3") Fase3Dialog();
         if (scene.name == "Fase 4") Fase4Dialog();
         if (scene.name == "Fase 5") Fase5Dialog();
         if (scene.name == "Castelo") CasteloDialog();
+        if (scene.name == "Castelo" && System.Math.Abs(player.transform.position.x - hades.transform.position.x) <= 5) HadesDialog();
     }
 }

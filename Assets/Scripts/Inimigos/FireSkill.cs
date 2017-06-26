@@ -7,6 +7,8 @@ public class FireSkill : MonoBehaviour {
     public GameObject player;
     private Animator animator;
     private bool dano = true;
+    private bool timer;
+    private float time=0;
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
@@ -17,10 +19,12 @@ public class FireSkill : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(8, 8);
         if (collision.gameObject.tag == "Player" && dano)
         {
-            player.gameObject.GetComponent<PlayerController>().hp-=20;
-            player.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 15);
+            player.gameObject.GetComponent<PlayerController>().hp-=10;
+            GetComponent<BoxCollider2D>().enabled=false;
             dano = false;
             animator.SetBool("Hited", true);
+            GetComponent<AudioSource>().Play();
+            timer = true;
         }
     }
 
@@ -31,6 +35,11 @@ public class FireSkill : MonoBehaviour {
         {
             if (transform.eulerAngles.x == 0) transform.Translate(-0.1f, 0, 0);
             else transform.Translate(0.1f, 0, 0);
+        }
+        if (timer)
+        {
+            time += Time.deltaTime;
+            if (time >= 0.2) Destroy(gameObject);
         }
 	}
 }

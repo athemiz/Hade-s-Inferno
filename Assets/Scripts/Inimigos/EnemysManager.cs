@@ -37,7 +37,6 @@ public class EnemysManager : MonoBehaviour {
                 if (esqueleto) esqueleto.hp--;
                 else if (skull_lava)
                 {
-                    Debug.Log(skull_lava.hp);
                     skull_lava.hp--;
                 }
                 else if (hellwolf) {
@@ -45,7 +44,6 @@ public class EnemysManager : MonoBehaviour {
                 }
                 else if (hades)
                 {
-                    Debug.Log(hades.hp);
                     hades.hp--;
                 }
 

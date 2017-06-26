@@ -13,6 +13,7 @@ public class HadesIA : MonoBehaviour {
     private float time = 0;
     public int hp = 500;
     public bool timer = true;
+    public bool timer2 = true;
     public bool move = false;
     public bool fire = true;
     public bool isGrounded;
@@ -57,6 +58,7 @@ public class HadesIA : MonoBehaviour {
     {
         time += Time.deltaTime;
         if (System.Math.Abs(player.transform.position.x - this.transform.position.x) <= 4) move = true;
+        if(hp==0) animator.SetBool("isDead", true);
         if (!this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("dead") && move)
         {
             if (Random.Range(1, 80) == 2 && isGrounded)
@@ -65,14 +67,14 @@ public class HadesIA : MonoBehaviour {
                 animator.SetBool("isJumping", true);
                 body.AddForce(transform.up * force);
             }
-            if (time > 2 && time < 3 && timer)
+            if (time > 1.3 && time < 2.3 && timer)
             {
                 timer = false;
                 animator.SetBool("isAttacking", true);
                 fire = false;
                 Instantiate(fire_obj, new Vector2(transform.position.x, transform.position.y),Quaternion.Euler(0,fire_angle,0));
             }
-            else if (time > 3.05)
+            else if (time > 2.35)
             {
                 time = 0;
                 timer = true;
@@ -97,7 +99,11 @@ public class HadesIA : MonoBehaviour {
         }
         else if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("dead"))
         {
-            time = 0;
+            Debug.Log("hashsa");
+            if(timer2){
+                time = 0;
+                timer2 = false;
+                }
             if (time >= 3) Application.LoadLevel("Creditos");
         }
     }

@@ -12,6 +12,8 @@ public class SurvivabilityManager : MonoBehaviour {
     private Skull_lavaIA skull_lavaIA;
     public GameObject hellwolf;
     private HellwolfIA hellwolfIA;
+    public GameObject hades;
+    private HadesIA hadesIA;
     public GameObject hp;
     public GameObject stamina;
     public GameObject hp_red;
@@ -25,6 +27,7 @@ public class SurvivabilityManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
         if (player)
         {
             hp.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(player.GetComponent<PlayerController>().hp, hp.GetComponent<Image>().rectTransform.sizeDelta.y);
@@ -34,5 +37,6 @@ public class SurvivabilityManager : MonoBehaviour {
         else if (esqueleto) hp.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(esqueleto.GetComponent<EsqueletosIA>().hp, hp.GetComponent<Image>().rectTransform.sizeDelta.y);
         else if (skull_lava) hp.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(skull_lava.GetComponent<Skull_lavaIA>().hp, hp.GetComponent<Image>().rectTransform.sizeDelta.y);
         else if (hellwolf) hp.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(hellwolf.GetComponent<HellwolfIA>().hp, hp.GetComponent<Image>().rectTransform.sizeDelta.y);
+        else if (hades) hp.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(hades.GetComponent<HadesIA>().hp, hp.GetComponent<Image>().rectTransform.sizeDelta.y);
     }
 }
