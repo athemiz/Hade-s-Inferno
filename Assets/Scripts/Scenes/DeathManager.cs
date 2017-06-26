@@ -14,6 +14,7 @@ public class DeathManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Physics2D.IgnoreLayerCollision(9, 8);
         if (collision.gameObject.tag == "Player")
         {
             Application.LoadLevel(scene.name);

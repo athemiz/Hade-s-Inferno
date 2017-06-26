@@ -14,7 +14,8 @@ public class ScenesManager : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            Application.LoadLevel("LevelSelect");
+            if(scene.name!="Fase 5")Application.LoadLevel("LevelSelect");
+            else Application.LoadLevel("Castelo");
         }
     }
 

@@ -43,11 +43,10 @@ public class LevelSelectorManager : MonoBehaviour {
             else if (selector_img.transform.position == fase5_img.transform.position) selector_img.transform.position = fase4_img.transform.position;
         }
 
-        if (selector_img.transform.position == fase1_img.transform.position) Debug.Log(selector_img.transform.position.y);
-        if (selector_img.transform.position == fase1_img.transform.position && Input.GetKey(KeyCode.Space)) Application.LoadLevel("Fase 1");
-        else if (selector_img.transform.position == fase2_img.transform.position && Input.GetKey(KeyCode.Space)) Application.LoadLevel("Fase 2");
-        else if (selector_img.transform.position == fase3_img.transform.position && Input.GetKey(KeyCode.Space)) Application.LoadLevel("Fase 3");
-        else if (selector_img.transform.position == fase4_img.transform.position && Input.GetKey(KeyCode.Space)) Application.LoadLevel("Fase 4");
-        else if (selector_img.transform.position == fase5_img.transform.position && Input.GetKey(KeyCode.Space)) Application.LoadLevel("Fase 5");
+        if (selector_img.transform.position == fase1_img.transform.position && Input.GetKey(KeyCode.Return)) Application.LoadLevel("Fase 1");
+        else if (selector_img.transform.position == fase2_img.transform.position && Input.GetKey(KeyCode.Return)) Application.LoadLevel("Fase 2");
+        else if (selector_img.transform.position == fase3_img.transform.position && Input.GetKey(KeyCode.Return)) Application.LoadLevel("Fase 3");
+        else if (selector_img.transform.position == fase4_img.transform.position && Input.GetKey(KeyCode.Return)) Application.LoadLevel("Fase 4");
+        else if (selector_img.transform.position == fase5_img.transform.position && Input.GetKey(KeyCode.Return)) Application.LoadLevel("Fase 5");
     }
 }

@@ -6,6 +6,7 @@ public class EnemysManager : MonoBehaviour {
     public EsqueletosIA esqueleto;
     public Skull_lavaIA skull_lava;
     public HellwolfIA hellwolf;
+    public HadesIA hades;
 
     public GameObject player;
     public Rigidbody2D body;
@@ -41,9 +42,13 @@ public class EnemysManager : MonoBehaviour {
                 }
                 else if (hellwolf) {
                     hellwolf.hp--;
-                    Debug.Log(hellwolf.hp);
-                        }
-                
+                }
+                else if (hades)
+                {
+                    Debug.Log(hades.hp);
+                    hades.hp--;
+                }
+
                 //Toca o som e liga o temporizador para poder tocar o som novamente
                 if (time == 0)
                 {
